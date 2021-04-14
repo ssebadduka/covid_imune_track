@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h4>Personal Details</h4>
+{% endblock title %}
+
+
+
+{% block content %}
+  <div class="table-responsive">
+    <table id="studenttable" class="table table-bordered table-hover" data-page-length='2'>
+      <thead class="thead-light">
+        <tr>
+          <th>Id</th>
+          <th>national Id</th>
+          <th>first name</th>
+          <th>last name</th>
+          <th>status</th>
+          <th>contact</th>
+          <th>email</th>
+          <th>date immunized</th>
+          <th>reportback date</th>
+          <th>dose status</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for person in persons %}
+          <tr class='clickable-row' data-href="#">
+            
+            <td>{{person.id}}</td>
+            <td> {{person.national_id_or_passport_no}} </td>
+            <td>{{person.first_name}}</td>
+            <td>{{ person.last_name}}</td>
+            <td>{{ person.status}}</td>
+            <td>{{ person.contact}}</td>
+            <td>{{ person.email}}</td>
+            <td>{{ person.date_immunized}}</td>
+            <td>{{ person.report_back_date}}</td>
+            <td>{{ person.dose_status}}</td>
+          </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}
+
+
+{% block morejs %}
+<script>
+  $('#studenttable').DataTable({
+  });
+</script>
+
+{% endblock morejs %}
